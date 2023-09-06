@@ -16,18 +16,32 @@ Assume that the environment described in [this document](https://docs.google.com
 In the [example](./example), I put a sample code of the [litebird_sim](https://github.com/litebird/litebird_sim/tree/master), which can be executed with JSS3.　
 The litebird_sim anaconda virtual environment is required for execution.
 
-- `get_hitmap_serial.py`
-    - Since this is a serial computation code without MPI parallel computation, it can be executed independent of the environment. It is placed here for comparison with `get_hitmap_parallel.py`. 
+### RURI
+- `get_hitmap_serial_ruri.py`
+    - Since this is a serial computation code without MPI parallel computation, it can be executed independent of the environment. It is placed here for comparison with `get_hitmap_parallel_ruri.py`. 
     - The way for executing is 
     ```
-    (lbs_env) $ python get_hitmap_serial.py
+    (lbs_env)$ python get_hitmap_serial_ruri.py
     ```
     
-- `get_hitmap_parallel.py`
-    - The code is for MPI parallel computation with the same result for serial computation. A batch job script must be submitted to RURI to execute this code. The code to submit the job is [run_parallel.py](./example/run_parallel.py), written in python. The required script is generated in the python code, and the job is submitted to the job scheduler using subprocess. The number of nodes, cores, memory requirements, etc. are set in this code. 
+- `get_hitmap_parallel_ruri.py`
+    - The code is for MPI parallel computation with the same result for serial computation. A batch job script must be submitted to RURI to execute this code. The code to submit the job is [run_parallel_ruri.py](./example/RURI/run_parallel_ruri.py), written in python. The required script is generated in the python code, and the job is submitted to the job scheduler using subprocess. The number of nodes, cores, memory request, etc. are set in this code. 
     - The way for executing is 
     ```
-    (lbs_env) $ python run_parallel.py
+    (lbs_env)$ python run_parallel_ruri.py
     ```
 
+### SORA
+- `get_hitmap_serial_sora.py`
+    - Since this is a serial computation code without MPI parallel computation, it can be executed independent of the environment. It is placed here for comparison with `get_hitmap_parallel_sora.py`. 
+    - The way for executing is 
+    ```
+    (lbs_env)$ python run_serial_sora.py
+    ```
     
+- `get_hitmap_parallel_sora.py`
+    - The code is for MPI parallel computation with the same result for serial computation. A batch job script must be submitted to SORA to execute this code. The code to submit the job is [run_parallel_sora.py](./example/SORA/run_parallel_sora.py), written in python. The required script is generated in the python code, and the job is submitted to the job scheduler using subprocess. The number of nodes, cores, memory request, etc. are set in this code. 
+    - The way for executing is 
+    ```
+    (lbs_env)$ python run_parallel_sora.py
+    ```
