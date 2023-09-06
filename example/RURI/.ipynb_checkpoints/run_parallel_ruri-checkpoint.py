@@ -3,20 +3,20 @@ import subprocess
 import sys
 import os 
 
+#==================== You should modify here ====================#
 jss_account = "t541"
+user_email  = "takase_y@s.okayama-u.ac.jp"
 coderoot    = f"/home/{jss_account[0]}/{jss_account}/data/jss3_tools/example/RURI"
+conda_base  = f"/ssd/{jss_account[0]}/{jss_account}/.src/anaconda3/etc/profile.d/conda.sh"
+#================================================================#
 lbsim_code  = "get_hitmap_parallel_ruri.py"
 job_name    = "get_hitmap_parallel_ruri"
-
 bizcode     = "DU10503"
 vnode       = 1
 vnode_core  = 2   # Maxmum of the RURI: 36 cores
 vnode_mem   = 8   # Unit: GiB
 mode        = "debug" 
-user_email  = "takase_y@s.okayama-u.ac.jp"
-
 jobscript   = coderoot + "/" + "run_"+job_name+".pjm"
-conda_base  = f"/ssd/{jss_account[0]}/{jss_account}/.src/anaconda3/etc/profile.d/conda.sh"
 
 elapse      = "00:01:00" # When you use the `debug` mode you should requesgt <= 1800 == "00:30:00"
 if mode == "debug":

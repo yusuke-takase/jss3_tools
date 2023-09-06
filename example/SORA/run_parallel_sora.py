@@ -3,21 +3,23 @@ import subprocess
 import sys
 import os 
 
+#==================== You should modify here ====================#
 jss_account   = "t541"
-codename      = "get_hitmap_parallel_sora.py"
+user_email    = "takase_y@s.okayama-u.ac.jp"
 coderoot      = f"/home/{jss_account[0]}/{jss_account}/data/jss3_tools/example/SORA"
+venv_base     = f"/ssd/{jss_account[0]}/{jss_account}/.src/lbs_sora/bin/activate"
+#================================================================#
+codename      = "get_hitmap_parallel_sora.py"
 job_name      = "get_hitmap_parallel_sora"
-
 bizcode       = "DU10503"
 resource_unit = "SORA"
 node          = 1
 node_mem      = 28   # Unit: GiB, Upper limit=28GiB, Value when unspecified=28GiB
 mpi_process   = 46   # Upper limit of number of process per node is 48
 mode          = "debug" 
-user_email    = "takase_y@s.okayama-u.ac.jp"
 
 jobscript     = coderoot+"/"+"run_"+job_name+".pjm"
-venv_base     = f"/ssd/{jss_account[0]}/{jss_account}/.src/lbs_sora/bin/activate"
+
 elapse        = "00:01:00" # When you use the `debug` mode you should requesgt <= 1800 == "00:30:00"
 if mode == "debug":
     elapse    = "00:10:00"
