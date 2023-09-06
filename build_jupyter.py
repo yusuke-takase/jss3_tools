@@ -6,14 +6,15 @@ import time
 import re
 import os
 
-bizcode     = "DU10503"
-jss_account = "t541"
-vnode       = 1
-vnode_core  = 1
-vnode_mem   = 24          # unit: GiB
-elapse      = "12:00:00"   # hh:mm:ss
-jobname     = "jupyter"
-port        = "7123" 
+bizcode          = "DU10503"
+jss_account      = "t541"
+vnode            = 1
+vnode_core       = 1
+vnode_mem        = 24           # unit: GiB
+elapse           = "12:00:00"   # hh:mm:ss
+jobname          = "jupyter"
+port             = "7123" 
+singularity_path = "/data/{jss_account[0]}/{jss_account}/.src/singularity/ubuntu_20.04_jupyter_edit.sif"
 
 pjm = """#!/bin/zsh
 #JX --bizcode {bizcode}
@@ -31,8 +32,8 @@ pjm = """#!/bin/zsh
 
 cd /home/{jss_account[0]}/{jss_account}
 module load singularity
-singularity run /data/{jss_account[0]}/{jss_account}/.src/singularity/ubuntu_20.04_jupyter_edit.sif jupyter lab --ip=0.0.0.0 --no-browser"""
-
+singularity run {singularity_path} jupyter lab --ip=0.0.0.0 --no-browser
+"""
 
 base_path = f"/data/{jss_account[0]}/{jss_account}/.log"
 if not os.path.exists(base_path):
@@ -41,7 +42,7 @@ if not os.path.exists(base_path):
         os.makedirs(base_path+"/jupyter")
 
 pjm         = pjm.format(**locals())
-jobscript   = f"/home/{jss_account[0]}/{jss_account}/.jupyter/pjm_jupyter.sh"
+jobscript   = f"/home/{jss_account[0]}/{jss_account}/.jupyter/pjm_jupyter.pjm"
 f           = open(jobscript, "wt")
 f.write(pjm)
 f.close()
