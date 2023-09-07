@@ -14,7 +14,7 @@ vnode_mem        = 24           # unit: GiB
 elapse           = "12:00:00"   # hh:mm:ss
 jobname          = "jupyter"
 port             = "7123" 
-singularity_path = "/data/{jss_account[0]}/{jss_account}/.src/singularity/ubuntu_20.04_jupyter_edit.sif"
+singularity_path = f"/data/{jss_account[0]}/{jss_account}/.src/singularity/ubuntu_20.04_jupyter_edit.sif"
 
 pjm = """#!/bin/zsh
 #JX --bizcode {bizcode}
