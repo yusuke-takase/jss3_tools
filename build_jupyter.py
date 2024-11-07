@@ -6,14 +6,16 @@ import time
 import re
 import os
 
-bizcode          = "DU10503"
-jss_account      = "t541"
+whoami = subprocess.run(['whoami'], capture_output=True, text=True)
+jss_account = whoami.stdout.strip()
+bizcode = os.getenv('BIZCODE') # load registered enviroment variable
+
 vnode            = 1
-vnode_core       = 1
+vnode_core       = 4
 vnode_mem        = 24           # unit: GiB
 elapse           = "12:00:00"   # hh:mm:ss
 jobname          = "jupyter"
-port             = "7123" 
+port             = "7123"
 singularity_path = f"/data/{jss_account[0]}/{jss_account}/.src/singularity/ubuntu_20.04_jupyter_edit.sif"
 
 pjm = """#!/bin/zsh

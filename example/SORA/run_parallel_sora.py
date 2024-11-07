@@ -15,7 +15,7 @@ bizcode       = "DU10503"
 resource_unit = "SORA"
 node          = 1
 node_mem      = 28   # Unit: GiB, Upper limit=28GiB, Value when unspecified=28GiB
-mpi_process   = 46   # Upper limit of number of process per node is 48
+mpi_process   = 48   # Upper limit of number of process per node is 48
 mode          = "debug" 
 
 jobscript     = coderoot+"/"+"run_"+job_name+".pjm"
